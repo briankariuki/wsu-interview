@@ -4,6 +4,7 @@ class Assets {
   // static const String _lottie = 'assets/lottie/';
 
   static const String home1 = '${_icons}home.svg';
+  static const String home2 = '${_icons}home-solid.svg';
   static const String arrowBigRight = '${_icons}arrow-right.svg';
   static const String arrowLeft = '${_icons}arrow-narrow-left.svg';
   static const String arrowRight = '${_icons}arrow-narrow-right.svg';

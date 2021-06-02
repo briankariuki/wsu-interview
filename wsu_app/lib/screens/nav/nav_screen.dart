@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:wsu_app/assets.dart';
 import 'package:wsu_app/config/palette.dart';
+import 'package:wsu_app/screens/all_entries/all_entries_screen.dart';
 import 'package:wsu_app/screens/home/home_screen.dart';
 import 'package:wsu_app/screens/nav/nav_controller.dart';
 import 'package:wsu_app/widgets/responsive_widget.dart';
@@ -41,7 +44,7 @@ class NavScreen extends ResponsiveWidget<NavScreenController> {
             index: controller.currentPage.value,
             children: [
               HomeScreen(),
-              Scaffold(),
+              AllEntriesScreen(),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -51,14 +54,24 @@ class NavScreen extends ResponsiveWidget<NavScreenController> {
             },
             items: [
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
+                icon: Obx(
+                  () => SvgPicture.asset(
+                    controller.currentPage.value == 0 ? Assets.home2 : Assets.home1,
+                    color: controller.currentPage.value == 0 ? Palette.black : Palette.gray3,
+                    height: 28.0,
+                    width: 28.0,
+                  ),
                 ),
                 label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.date_range_outlined,
+                icon: Obx(
+                  () => SvgPicture.asset(
+                    controller.currentPage.value == 1 ? Assets.folderSolid : Assets.folder,
+                    color: controller.currentPage.value == 1 ? Palette.black : Palette.gray3,
+                    height: 28.0,
+                    width: 28.0,
+                  ),
                 ),
                 label: '',
               ),

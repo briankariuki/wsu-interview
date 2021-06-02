@@ -252,11 +252,13 @@ class ParagraphBold extends StatelessWidget {
 class ParagraphMedium extends StatelessWidget {
   final String title;
   final Color color;
+  final double fontSize;
 
   const ParagraphMedium({
     Key key,
     @required this.title,
     @required this.color,
+    this.fontSize = 14,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -265,7 +267,7 @@ class ParagraphMedium extends StatelessWidget {
         title,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          fontSize: 14,
+          fontSize: fontSize,
           color: color,
           fontFamily: 'Inter',
           fontWeight: FontWeight.w500,

@@ -4,7 +4,7 @@ import 'package:wsu_app/api/entry_api.dart';
 import 'package:wsu_app/helpers/helpers.dart';
 import 'package:wsu_app/models/models.dart';
 
-class HomeScreenController extends GetxController {
+class AllEntriesScreenController extends GetxController {
   var isFetching = false.obs;
 
   EntryApi entryApi = Get.put(EntryApi());
@@ -43,7 +43,7 @@ class HomeScreenController extends GetxController {
 
       var userId = User.fromString(prefs.getString("user")).id;
 
-      Map<String, dynamic> query = {'page': page.toString(), 'userId': userId};
+      Map<String, dynamic> query = {'page': page.toString()};
 
       if (q != null && q.trim().isNotEmpty) query.addAll({'q': q.trim()});
 

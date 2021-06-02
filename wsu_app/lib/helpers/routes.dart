@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:wsu_app/screens/add_entry/add_entry_screen.dart';
 import 'package:wsu_app/screens/add_entry/add_entry_success.dart';
+import 'package:wsu_app/screens/entry/entry_screen.dart';
 import 'package:wsu_app/screens/login/login_screen.dart';
 import 'package:wsu_app/screens/nav/nav_screen.dart';
 import 'package:wsu_app/screens/register/register_screen.dart';
@@ -30,6 +31,11 @@ final kRoutes = [
   GetPage(
     name: '/login',
     page: () => LoginScreen(),
+    children: [],
+  ),
+  GetPage(
+    name: '/entry/:entryId',
+    page: () => EntryScreen(),
     children: [],
   ),
   GetPage(
