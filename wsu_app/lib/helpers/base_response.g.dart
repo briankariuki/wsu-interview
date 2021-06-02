@@ -14,7 +14,13 @@ BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) {
         : User.fromJson(json['user'] as Map<String, dynamic>)
     ..error = json['error'] == null
         ? null
-        : Error.fromJson(json['error'] as Map<String, dynamic>);
+        : Error.fromJson(json['error'] as Map<String, dynamic>)
+    ..entry = json['entry'] == null
+        ? null
+        : Entry.fromJson(json['entry'] as Map<String, dynamic>)
+    ..entryPage = json['entryPage'] == null
+        ? null
+        : EntryPage.fromJson(json['entryPage'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
@@ -22,4 +28,6 @@ Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
       'token': instance.token,
       'user': instance.user,
       'error': instance.error,
+      'entry': instance.entry,
+      'entryPage': instance.entryPage,
     };
