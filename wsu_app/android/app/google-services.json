@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "390332025166",
+    "firebase_url": "https://wsu-interview-default-rtdb.firebaseio.com",
+    "project_id": "wsu-interview",
+    "storage_bucket": "wsu-interview.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390332025166:android:61424be331b0a5017c361f",
+        "android_client_info": {
+          "package_name": "com.wingulabs.wsu_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390332025166-8k3igogafqgsqql6e3dtotaeefo55i24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wingulabs.wsu_app",
+            "certificate_hash": "b5d80ac6b7e65e4936d4faf43ecfc896ba2b315b"
+          }
+        },
+        {
+          "client_id": "390332025166-oqnfcnh6crqadr952at30n9n6350bhi8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeMHiEnYehsu34tUDvWn1O5o3ghQY8KfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390332025166-oqnfcnh6crqadr952at30n9n6350bhi8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

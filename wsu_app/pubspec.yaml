@@ -21,6 +21,7 @@ dependencies:
   uuid: ^3.0.4
   firebase_auth: ^1.2.0
   firebase_core: ^1.2.0
+  flutter_svg: ^0.22.0
 
 dependency_overrides:
   json_serializable: ^3.5.1

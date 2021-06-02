@@ -19,4 +19,6 @@ class Assets {
   static const String image = '${_icons}photograph.svg';
   static const String share = '${_icons}share.svg';
   static const String play = '${_icons}play.svg';
+  static const String eye = '${_icons}eye.svg';
+  static const String eyeOff = '${_icons}eye-off.svg';
 }
