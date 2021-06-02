@@ -1,39 +1,63 @@
-import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
-import express from "express";
 import helmet from "helmet";
-import * as http from "http";
 import morgan from "morgan";
-import schema from "../graphql/schema";
+import config from "./config";
 
-class Express {
-  public express: express.Application;
-  public server: ApolloServer = new ApolloServer(schema);
-  public httpServer: http.Server;
+import { Application, Request, Response, NextFunction } from "express";
+import { ErrorObject, serializeError } from "serialize-error";
+import { isCelebrateError } from "celebrate";
 
-  public init = (): void => {
-    this.express = express();
+export function configExpress(app: Application): void {
+  app.use(cors());
+  app.use(morgan("combined"));
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+  );
 
-    this.express.use(cors());
-    this.express.use(morgan("combined"));
-    this.express.use(
-      helmet({
-        contentSecurityPolicy: false,
-      })
-    );
-
-    this.express.get("/", (req, res) => {
-      res.send("Yay! Sending links");
-    });
-    this.express.get("/test", (req, res) => {
-      res.send("Yay! Test succeeded. Not nginx");
-    });
-
-    this.server.applyMiddleware({ app: this.express });
-    this.httpServer = http.createServer(this.express);
-
-    this.server.installSubscriptionHandlers(this.httpServer);
-  };
+  app.get("/", (req, res) => {
+    res.send("Yay! Sending links");
+  });
+  app.get("/test", (req, res) => {
+    res.send("Yay! Test succeeded. Not nginx");
+  });
 }
 
-export default Express;
+export function configExpressNotFoundError(app: Application): void {
+  app.use((req, res, next) => {
+    const error: DefaultError = new Error("URL not found");
+
+    error.code = "404";
+    error.status = 404;
+
+    next(error);
+  });
+}
+
+export function configExpressError(app: Application): void {
+  app.use(
+    (error: DefaultError, req: Request, res: Response, next: NextFunction) => {
+      const { name, stack, status, code, message } = error;
+
+      const serializedError: ErrorObject & {
+        status?: number;
+      } = serializeError({ name, stack, status, code, message });
+
+      serializedError.code = serializedError.code || "500";
+
+      delete serializedError.status;
+
+      if (isCelebrateError(error))
+        serializedError.message = error.details
+          .entries()
+          .next().value[1].details[0].message;
+
+      if (config.NODE_ENV !== "development") delete serializedError.stack;
+
+      res.status(error.status || 500).json({ error: serializedError });
+
+      next();
+    }
+  );
+}

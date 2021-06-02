@@ -13,6 +13,8 @@ const config = {
     csrfToken: process.env.CSRF_TOKEN,
     userId: process.env.USER_ID,
   },
+  LOG_LEVEL: process.env.LOG_LEVEL,
+  NODE_ENV: process.env.NODE_ENV,
 };
 
 export default config;

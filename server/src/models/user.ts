@@ -8,7 +8,9 @@ export type User = {
   uid: string;
   email: string;
   displayName: string;
-  posts: number;
+  photoURL: string;
+  data: number;
+  role: Role;
   suggestions?: string[];
 };
 
@@ -37,6 +39,11 @@ const userSchema = new Schema(
       required: true,
       es_indexed: true,
     },
+    photoURL: {
+      type: String,
+      required: true,
+      es_indexed: true,
+    },
 
     suggestions: {
       type: [String],
@@ -48,7 +55,7 @@ const userSchema = new Schema(
       default: "default",
       enum: ["default", "admin", "support"],
     },
-    posts: {
+    data: {
       type: Number,
       default: 0,
     },
