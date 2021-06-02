@@ -19,7 +19,7 @@ class SplashController extends GetxController {
     isChecking.value = true;
 
     if (FirebaseAuth.instance.currentUser == null)
-      Get.offAndToNamed('/login');
+      Get.offAndToNamed('/register');
     else {
       try {
         BaseResponse response = (await Get.put(AuthApi()).auth()).body;
@@ -37,7 +37,7 @@ class SplashController extends GetxController {
 
           isOk.value = true;
         } else {
-          // toast(e);
+          toast(e);
           isOk.value = false;
         }
       }

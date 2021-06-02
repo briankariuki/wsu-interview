@@ -6,11 +6,11 @@ import 'package:wsu_app/helpers/helpers.dart';
 class AppTheme {
   static ThemeData lightThemeData(BuildContext context) {
     return ThemeData(
-      primaryColor: Palette.primary,
+      primaryColor: Palette.black,
       fontFamily: 'Inter',
-      primarySwatch: generateMaterialColor(Palette.primary),
+      primarySwatch: generateMaterialColor(Palette.black),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      indicatorColor: Palette.primary,
+      indicatorColor: Palette.black,
       pageTransitionsTheme: PageTransitionsTheme(
         builders: {
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
@@ -21,8 +21,8 @@ class AppTheme {
         },
       ),
       colorScheme: ColorScheme.light(
-        primary: Palette.primary,
-        secondary: Palette.secondary,
+        primary: Palette.black,
+        secondary: Colors.white,
       ),
     );
   }

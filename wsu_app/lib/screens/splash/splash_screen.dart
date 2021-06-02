@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wsu_app/config/env.dart';
 import 'package:wsu_app/screens/splash/splash_controller.dart';
 import 'package:wsu_app/widgets/responsive_widget.dart';
 
@@ -21,7 +22,7 @@ class SplashScreen extends ResponsiveWidget<SplashController> {
               ? CircularProgressIndicator()
               : TextButton(
                   onPressed: () => controller.auth(),
-                  child: Text('Try again'),
+                  child: Text('Try again $kBaseApiUrl'),
                 ),
         ),
       ),

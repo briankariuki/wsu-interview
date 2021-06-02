@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:wsu_app/config/theme.dart';
 import 'package:wsu_app/helpers/helpers.dart';
 
@@ -19,7 +19,7 @@ void main() async {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license2);
   });
 
-  await DotEnv.load();
+  await load();
 
   await Firebase.initializeApp();
 

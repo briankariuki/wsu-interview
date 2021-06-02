@@ -13,6 +13,10 @@ class BaseResponse {
 
   Error error;
 
+  Entry entry;
+
+  EntryPage entryPage;
+
   static BaseResponse fromJson(dynamic json) => _$BaseResponseFromJson(json);
 
   @override

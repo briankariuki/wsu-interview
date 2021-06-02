@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 import { defaultPlugin } from "../plugins/default";
 import { PagedModel, SearchableModel, DefaultDocument } from "../plugins/types";
+import { EntryModel } from "./entry";
 
 export type Role = "default" | "admin" | "support";
 
@@ -12,6 +13,7 @@ export type User = {
   data: number;
   role: Role;
   suggestions?: string[];
+  entries: number;
 };
 
 export type UserDocument = DefaultDocument &
@@ -44,6 +46,10 @@ const userSchema = new Schema(
       required: true,
       es_indexed: true,
     },
+    entries: {
+      type: Number,
+      default: 0,
+    },
 
     suggestions: {
       type: [String],
@@ -70,7 +76,10 @@ async function addFields(this: any): Promise<void> {
 
   const { _id } = doc;
 
-  //   doc.posts = await PostModel.countDocuments({ user: _id, parent: { $exists: false } });
+  doc.entries = await EntryModel.countDocuments({
+    user: _id,
+    parent: { $exists: false },
+  });
 
   doc.suggestions = `${doc.displayName}`.trim().split(" ");
 
