@@ -12,4 +12,9 @@ final kRoutes = [
     page: () => Scaffold(),
     children: [],
   ),
+  GetPage(
+    name: '/nav',
+    page: () => Scaffold(),
+    children: [],
+  ),
 ];
