@@ -2,21 +2,22 @@ import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:wsu_app/helpers/helpers.dart';
+import 'package:wsu_app/models/user.dart';
 
 part 'entry.g.dart';
 
 @JsonSerializable()
 class Entry extends BaseObject {
-  String user;
+  User user;
   String county;
   String subcounty;
   List<String> animals;
   int animalsAffected;
   int animalsDead;
-  String animalSymptomps;
+  String animalSymptoms;
   int peopleAffected;
   int peopleDead;
-  String humanSymptomps;
+  String humanSymptoms;
   List<String> exposed;
 
   @JsonKey(ignore: true)

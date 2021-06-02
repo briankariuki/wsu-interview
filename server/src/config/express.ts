@@ -3,13 +3,15 @@ import helmet from "helmet";
 import morgan from "morgan";
 import config from "./config";
 
-import { Application, Request, Response, NextFunction } from "express";
+import express, { Application, Request, Response, NextFunction } from "express";
 import { ErrorObject, serializeError } from "serialize-error";
 import { isCelebrateError } from "celebrate";
 
 export function configExpress(app: Application): void {
   app.use(cors());
   app.use(morgan("combined"));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
   app.use(
     helmet({
       contentSecurityPolicy: false,
@@ -20,7 +22,7 @@ export function configExpress(app: Application): void {
     res.send("Yay! Sending links");
   });
   app.get("/test", (req, res) => {
-    res.send("Yay! Test succeeded. Not nginx");
+    res.send("Yay! Test succeeded. ");
   });
 }
 

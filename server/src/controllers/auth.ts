@@ -40,7 +40,7 @@ export class AuthController extends BaseHttpController {
       user = await this.userService.findOne({ uid: id });
 
       if (user._status != "active")
-        throw new Error("You have been blocked from Agizo. Contact support");
+        throw new Error("You have been blocked from App. Contact support");
     }
 
     response.json({ user });

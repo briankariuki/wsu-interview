@@ -12,6 +12,8 @@ import { EntryService } from "../services/entry";
 
 export function getContainer(): Container {
   const container = new Container({ skipBaseClassChecks: true });
+  container.bind<UserEventEmitter>(UserEventEmitter).to(UserEventEmitter);
+  container.bind<UserService>(UserService).to(UserService);
 
   container.bind<Auth0Middleware>(Auth0Middleware).to(Auth0Middleware);
 
@@ -19,9 +21,6 @@ export function getContainer(): Container {
 
   container.bind<AppEventEmitter>(AppEventEmitter).to(AppEventEmitter);
   container.bind<AppService>(AppService).to(AppService);
-
-  container.bind<UserEventEmitter>(UserEventEmitter).to(UserEventEmitter);
-  container.bind<UserService>(UserService).to(UserService);
 
   container.bind<EntryEventEmitter>(EntryEventEmitter).to(EntryEventEmitter);
   container.bind<EntryService>(EntryService).to(EntryService);

@@ -27,10 +27,10 @@ export class EntryController extends BaseHttpController {
         animals: Joi.any(),
         animalsAffected: Joi.number().required(),
         animalsDead: Joi.number().required(),
-        animalSymptopms: Joi.string().required(),
+        animalSymptoms: Joi.string().required(),
         peopleAffected: Joi.number().required(),
         peopleDead: Joi.number().required(),
-        humanSymptopms: Joi.string().required(),
+        humanSymptoms: Joi.string().required(),
         exposed: Joi.any(),
       }),
     })
@@ -44,10 +44,10 @@ export class EntryController extends BaseHttpController {
           animals,
           animalsAffected,
           animalsDead,
-          animalSymptomps,
+          animalSymptoms,
           peopleAffected,
           peopleDead,
-          humanSymptomps,
+          humanSymptoms,
           exposed,
         },
       },
@@ -61,10 +61,10 @@ export class EntryController extends BaseHttpController {
       animals,
       animalsAffected,
       animalsDead,
-      animalSymptomps,
+      animalSymptoms,
       peopleAffected,
       peopleDead,
-      humanSymptomps,
+      humanSymptoms,
       exposed,
     });
 
@@ -82,10 +82,10 @@ export class EntryController extends BaseHttpController {
         animals: Joi.any(),
         animalsAffected: Joi.number(),
         animalsDead: Joi.number(),
-        animalSymptopms: Joi.string(),
+        animalSymptoms: Joi.string(),
         peopleAffected: Joi.number(),
         peopleDead: Joi.number(),
-        humanSymptopms: Joi.string(),
+        humanSymptoms: Joi.string(),
         exposed: Joi.any(),
         _status: Joi.string(),
       }),
@@ -100,10 +100,10 @@ export class EntryController extends BaseHttpController {
       animals,
       animalsAffected,
       animalsDead,
-      animalSymptomps,
+      animalSymptoms,
       peopleAffected,
       peopleDead,
-      humanSymptomps,
+      humanSymptoms,
       exposed,
     } = this.httpContext.request.body;
 
@@ -113,10 +113,10 @@ export class EntryController extends BaseHttpController {
       animals,
       animalsAffected,
       animalsDead,
-      animalSymptomps,
+      animalSymptoms,
       peopleAffected,
       peopleDead,
-      humanSymptomps,
+      humanSymptoms,
       exposed,
       _status,
     });
@@ -169,10 +169,6 @@ export class EntryController extends BaseHttpController {
     let query: Query = {};
 
     if (_status) query = { ...query, ...{ _status } };
-
-    if (parent) {
-      query = { ...query, ...{ parent } };
-    } else query = { ...query, ...{ parent: { $exists: false } } };
 
     if (user) query = { ...query, ...{ user } };
 

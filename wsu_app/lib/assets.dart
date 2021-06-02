@@ -1,6 +1,6 @@
 class Assets {
   static const String _icons = 'assets/icons/';
-  // static const String _images = 'assets/images/';
+  static const String _images = 'assets/images/';
   // static const String _lottie = 'assets/lottie/';
 
   static const String home1 = '${_icons}home.svg';
@@ -21,4 +21,6 @@ class Assets {
   static const String play = '${_icons}play.svg';
   static const String eye = '${_icons}eye.svg';
   static const String eyeOff = '${_icons}eye-off.svg';
+
+  static const String art1 = '${_images}art1.svg';
 }

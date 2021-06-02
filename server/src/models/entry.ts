@@ -9,10 +9,10 @@ export type Entry = {
   animals: string[];
   animalsAffected: number;
   animalsDead: number;
-  animalSymptomps: string;
+  animalSymptoms: string;
   peopleAffected: number;
   peopleDead: number;
-  humanSymptomps: string;
+  humanSymptoms: string;
   exposed: string[];
 };
 
@@ -47,7 +47,7 @@ const entrySchema = new Schema(
       type: Number,
       default: 0,
     },
-    animalSymptomps: {
+    animalSymptoms: {
       type: String,
       required: true,
     },
@@ -59,7 +59,7 @@ const entrySchema = new Schema(
       type: Number,
       default: 0,
     },
-    humanSymptomps: {
+    humanSymptoms: {
       type: String,
       required: true,
     },

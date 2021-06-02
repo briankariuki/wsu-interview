@@ -13,16 +13,18 @@ Entry _$EntryFromJson(Map<String, dynamic> json) {
     ..createdAt = json['createdAt'] == null
         ? null
         : DateTime.parse(json['createdAt'] as String)
-    ..user = json['user'] as String
+    ..user = json['user'] == null
+        ? null
+        : User.fromJson(json['user'] as Map<String, dynamic>)
     ..county = json['county'] as String
     ..subcounty = json['subcounty'] as String
     ..animals = (json['animals'] as List)?.map((e) => e as String)?.toList()
     ..animalsAffected = json['animalsAffected'] as int
     ..animalsDead = json['animalsDead'] as int
-    ..animalSymptomps = json['animalSymptomps'] as String
+    ..animalSymptoms = json['animalSymptoms'] as String
     ..peopleAffected = json['peopleAffected'] as int
     ..peopleDead = json['peopleDead'] as int
-    ..humanSymptomps = json['humanSymptomps'] as String
+    ..humanSymptoms = json['humanSymptoms'] as String
     ..exposed = (json['exposed'] as List)?.map((e) => e as String)?.toList();
 }
 
@@ -36,9 +38,9 @@ Map<String, dynamic> _$EntryToJson(Entry instance) => <String, dynamic>{
       'animals': instance.animals,
       'animalsAffected': instance.animalsAffected,
       'animalsDead': instance.animalsDead,
-      'animalSymptomps': instance.animalSymptomps,
+      'animalSymptoms': instance.animalSymptoms,
       'peopleAffected': instance.peopleAffected,
       'peopleDead': instance.peopleDead,
-      'humanSymptomps': instance.humanSymptomps,
+      'humanSymptoms': instance.humanSymptoms,
       'exposed': instance.exposed,
     };

@@ -9,7 +9,7 @@ export type User = {
   uid: string;
   email: string;
   displayName: string;
-  photoURL: string;
+  photoURL?: string;
   data: number;
   role: Role;
   suggestions?: string[];
@@ -43,7 +43,6 @@ const userSchema = new Schema(
     },
     photoURL: {
       type: String,
-      required: true,
       es_indexed: true,
     },
     entries: {

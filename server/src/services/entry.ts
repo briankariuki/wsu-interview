@@ -21,10 +21,10 @@ export class EntryService {
     animals: Entry["animals"];
     animalsAffected: Entry["animalsAffected"];
     animalsDead: Entry["animalsDead"];
-    animalSymptomps: Entry["animalSymptomps"];
+    animalSymptoms: Entry["animalSymptoms"];
     peopleAffected: Entry["peopleAffected"];
     peopleDead: Entry["peopleDead"];
-    humanSymptomps: Entry["humanSymptomps"];
+    humanSymptoms: Entry["humanSymptoms"];
     exposed: Entry["exposed"];
   }): Promise<Entry> {
     const entry = await new EntryModel(pickBy(data)).save();
@@ -44,10 +44,10 @@ export class EntryService {
       animals?: Entry["animals"];
       animalsAffected?: Entry["animalsAffected"];
       animalsDead?: Entry["animalsDead"];
-      animalSymptomps?: Entry["animalSymptomps"];
+      animalSymptoms?: Entry["animalSymptoms"];
       peopleAffected?: Entry["peopleAffected"];
       peopleDead?: Entry["peopleDead"];
-      humanSymptomps?: Entry["humanSymptomps"];
+      humanSymptoms?: Entry["humanSymptoms"];
       exposed?: Entry["exposed"];
       _status?: DefaultDocument["_status"];
     }

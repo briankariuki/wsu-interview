@@ -25,217 +25,281 @@ class RegisterScreen extends ResponsiveWidget<RegisterScreenController> {
           padding: EdgeInsets.symmetric(
             horizontal: 16.0,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
-              Heading3(
-                title: "Create \nYour Account",
-                color: Palette.black,
-                lineHeight: 1.4,
-              ),
-              const SizedBox(
-                height: 36.0,
-              ),
-              const SizedBox(
-                height: 32.0,
-              ),
-              Container(
-                child: Form(
-                  key: controller.formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ParagraphMedium(
-                        title: "Email Address",
-                        color: Palette.black3,
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      TextFormField(
-                        enabled: true,
-                        controller: controller.inputController,
-                        cursorColor: Palette.black,
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 16.0,
-                          color: Palette.gray2,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        decoration: InputDecoration(
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 18.0,
-                            vertical: 20.0,
-                          ),
-                          fillColor: Palette.gray7,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Palette.gray2,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Palette.secondary_red,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            ),
-                          ),
-                          filled: true,
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Enter Email';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          controller.email = value;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      ParagraphMedium(
-                        title: "Password",
-                        color: Palette.black3,
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      Obx(
-                        () => TextFormField(
-                          enabled: !controller.isSigningUp.value,
-                          controller: controller.passwordController,
-                          cursorColor: Palette.black,
-                          obscureText: controller.obscurePassword.value,
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16.0,
-                            color: Palette.gray2,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          decoration: InputDecoration(
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 18.0,
-                              vertical: 20.0,
-                            ),
-                            fillColor: Palette.gray6,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Palette.gray2,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
-                              ),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Palette.secondary_red,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            filled: true,
-                            suffixIcon: IconButton(
-                              icon: controller.obscurePassword.value
-                                  ? SvgPicture.asset(
-                                      Assets.eye,
-                                      color: Palette.gray4,
-                                      semanticsLabel: 'Eye On',
-                                      width: 20.0,
-                                      height: 20.0,
-                                    )
-                                  : SvgPicture.asset(
-                                      Assets.eyeOff,
-                                      color: Palette.black2,
-                                      semanticsLabel: 'Eye Off',
-                                      width: 20.0,
-                                      height: 20.0,
-                                    ),
-                              onPressed: () => controller.obscurePassword.toggle(),
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Enter Password';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            controller.password = value;
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 32.0,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Obx(
-                              () => CustomButton(
-                                title: 'Register',
-                                color: Palette.black,
-                                textColor: Colors.white,
-                                height: 60.0,
-                                minWidth: 164.0,
-                                isLoading: controller.isSigningUp.value,
-                                onTap: controller.isSigningUp.value == true
-                                    ? () {}
-                                    : () async {
-                                        FocusScope.of(context).unfocus();
-
-                                        if (controller.formKey.currentState.validate()) {
-                                          print(controller.inputController.text);
-
-                                          await controller.signUp();
-                                        }
-                                      },
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 48.0,
-                      ),
-                      Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Heading3(
+                    title: "Create \nYour Account",
+                    color: Palette.black,
+                    lineHeight: 1.4,
+                  ),
+                  const SizedBox(
+                    height: 36.0,
+                  ),
+                  const SizedBox(
+                    height: 32.0,
+                  ),
+                  Container(
+                    child: Form(
+                      key: controller.formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ParagraphMedium(
-                            title: "Already have an account ? ",
+                            title: "Enter Username",
                             color: Palette.black3,
                           ),
-                          GestureDetector(
-                            onTap: () => Get.offAndToNamed("/login"),
-                            child: ParagraphMedium(
-                              title: "Sign in",
-                              color: Palette.primary,
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          TextFormField(
+                            enabled: true,
+                            controller: controller.usernameController,
+                            cursorColor: Palette.black,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 16.0,
+                              color: Palette.gray2,
+                              fontWeight: FontWeight.w500,
                             ),
+                            decoration: InputDecoration(
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 18.0,
+                                vertical: 20.0,
+                              ),
+                              fillColor: Palette.gray7,
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Palette.gray2,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Palette.secondary_red,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: BorderSide(
+                                  width: 0,
+                                  style: BorderStyle.none,
+                                ),
+                              ),
+                              filled: true,
+                            ),
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Enter username';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              controller.username = value;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          ParagraphMedium(
+                            title: "Email Address",
+                            color: Palette.black3,
+                          ),
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          TextFormField(
+                            enabled: true,
+                            controller: controller.inputController,
+                            cursorColor: Palette.black,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 16.0,
+                              color: Palette.gray2,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            decoration: InputDecoration(
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 18.0,
+                                vertical: 20.0,
+                              ),
+                              fillColor: Palette.gray7,
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Palette.gray2,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Palette.secondary_red,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: BorderSide(
+                                  width: 0,
+                                  style: BorderStyle.none,
+                                ),
+                              ),
+                              filled: true,
+                            ),
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Enter Email';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              controller.email = value;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          ParagraphMedium(
+                            title: "Password",
+                            color: Palette.black3,
+                          ),
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          Obx(
+                            () => TextFormField(
+                              enabled: !controller.isSigningUp.value,
+                              controller: controller.passwordController,
+                              cursorColor: Palette.black,
+                              obscureText: controller.obscurePassword.value,
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16.0,
+                                color: Palette.gray2,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              decoration: InputDecoration(
+                                floatingLabelBehavior: FloatingLabelBehavior.never,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 18.0,
+                                  vertical: 20.0,
+                                ),
+                                fillColor: Palette.gray6,
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.gray2,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Palette.secondary_red,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                filled: true,
+                                suffixIcon: IconButton(
+                                  icon: controller.obscurePassword.value
+                                      ? SvgPicture.asset(
+                                          Assets.eye,
+                                          color: Palette.gray4,
+                                          semanticsLabel: 'Eye On',
+                                          width: 20.0,
+                                          height: 20.0,
+                                        )
+                                      : SvgPicture.asset(
+                                          Assets.eyeOff,
+                                          color: Palette.black2,
+                                          semanticsLabel: 'Eye Off',
+                                          width: 20.0,
+                                          height: 20.0,
+                                        ),
+                                  onPressed: () => controller.obscurePassword.toggle(),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Enter Password';
+                                }
+                                return null;
+                              },
+                              onChanged: (value) {
+                                controller.password = value;
+                              },
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 32.0,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Obx(
+                                  () => CustomButton(
+                                    title: 'Register',
+                                    color: Palette.black,
+                                    textColor: Colors.white,
+                                    height: 60.0,
+                                    minWidth: 164.0,
+                                    isLoading: controller.isSigningUp.value,
+                                    onTap: controller.isSigningUp.value == true
+                                        ? () {}
+                                        : () async {
+                                            FocusScope.of(context).unfocus();
+
+                                            if (controller.formKey.currentState.validate()) {
+                                              print(controller.inputController.text);
+
+                                              await controller.signUp();
+                                            }
+                                          },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 48.0,
+                          ),
+                          Row(
+                            children: [
+                              ParagraphMedium(
+                                title: "Already have an account ? ",
+                                color: Palette.black3,
+                              ),
+                              GestureDetector(
+                                onTap: () => Get.offAndToNamed("/login"),
+                                child: ParagraphMedium(
+                                  title: "Sign in",
+                                  color: Palette.primary,
+                                ),
+                              )
+                            ],
                           )
                         ],
-                      )
-                    ],
-                  ),
-                ),
-              )
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),
