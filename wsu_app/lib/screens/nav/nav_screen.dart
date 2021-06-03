@@ -90,6 +90,7 @@ class NavScreen extends ResponsiveWidget<NavScreenController> {
               color: Colors.white,
             ),
           ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
         ),
       ),
     );
