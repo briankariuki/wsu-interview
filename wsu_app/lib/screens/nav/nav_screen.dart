@@ -82,6 +82,14 @@ class NavScreen extends ResponsiveWidget<NavScreenController> {
             unselectedItemColor: Colors.black54,
             type: BottomNavigationBarType.fixed,
           ),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: Palette.black,
+            onPressed: () => Get.offAndToNamed("/add-entry"),
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );

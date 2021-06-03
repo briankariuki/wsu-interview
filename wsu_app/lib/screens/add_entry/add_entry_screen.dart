@@ -106,11 +106,11 @@ class AddEntryScreen extends ResponsiveWidget<AddEntryScreenController> {
                                         child: Ink(
                                           decoration: BoxDecoration(
                                             color: Palette.gray7,
-                                            borderRadius: BorderRadius.circular(6.0),
+                                            borderRadius: BorderRadius.circular(12.0),
                                           ),
                                           child: ListTile(
                                             shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(6.0),
+                                              borderRadius: BorderRadius.circular(12.0),
                                             ),
                                             leading: Container(
                                               height: 24.0,
@@ -273,11 +273,11 @@ class AddEntryScreen extends ResponsiveWidget<AddEntryScreenController> {
                                         child: Ink(
                                           decoration: BoxDecoration(
                                             color: Palette.gray7,
-                                            borderRadius: BorderRadius.circular(6.0),
+                                            borderRadius: BorderRadius.circular(12.0),
                                           ),
                                           child: ListTile(
                                             shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(6.0),
+                                              borderRadius: BorderRadius.circular(12.0),
                                             ),
                                             leading: Container(
                                               height: 24.0,

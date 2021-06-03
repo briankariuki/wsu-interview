@@ -34,7 +34,7 @@ class AddEntrySuccessWidget extends StatelessWidget {
             child: Center(
               child: ElevatedButton(
                 onPressed: () {
-                  Get.back();
+                  Get.offAndToNamed("/");
                 },
                 child: Text('Go back'),
               ),
